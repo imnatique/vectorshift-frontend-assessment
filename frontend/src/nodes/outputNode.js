@@ -1,47 +1,44 @@
-// outputNode.js
-
-import { useState } from 'react';
-import { Handle, Position } from 'reactflow';
+import { useState } from "react";
+import { BaseNode } from "../components/BaseNode";
 
 export const OutputNode = ({ id, data }) => {
-  const [currName, setCurrName] = useState(data?.outputName || id.replace('customOutput-', 'output_'));
-  const [outputType, setOutputType] = useState(data.outputType || 'Text');
+  const [name, setName] = useState(
+    data?.outputName || id.replace("customOutput-", "output_")
+  );
 
-  const handleNameChange = (e) => {
-    setCurrName(e.target.value);
-  };
-
-  const handleTypeChange = (e) => {
-    setOutputType(e.target.value);
-  };
+  const [type, setType] = useState(data?.outputType || "Text");
 
   return (
-    <div style={{width: 200, height: 80, border: '1px solid black'}}>
-      <Handle
-        type="target"
-        position={Position.Left}
-        id={`${id}-value`}
-      />
-      <div>
-        <span>Output</span>
-      </div>
-      <div>
-        <label>
-          Name:
-          <input 
-            type="text" 
-            value={currName} 
-            onChange={handleNameChange} 
-          />
-        </label>
-        <label>
-          Type:
-          <select value={outputType} onChange={handleTypeChange}>
-            <option value="Text">Text</option>
-            <option value="File">Image</option>
-          </select>
-        </label>
-      </div>
-    </div>
+    <BaseNode
+      title="Output"
+      subtitle="Pipeline Output"
+      headerColor="#16a34a"
+      inputs={[
+        {
+          id: `${id}-value`,
+        },
+      ]}
+    >
+      <label>
+        Name
+        <input
+          style={{ width: "100%" }}
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+      </label>
+
+      <label>
+        Type
+        <select
+          style={{ width: "100%" }}
+          value={type}
+          onChange={(e) => setType(e.target.value)}
+        >
+          <option>Text</option>
+          <option>Image</option>
+        </select>
+      </label>
+    </BaseNode>
   );
-}
+};

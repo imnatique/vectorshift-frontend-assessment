@@ -15,7 +15,14 @@ export const DatabaseNode = ({ id }) => {
       <label>
         Table
         <input
-          style={{ width: "100%" }}
+          style={{
+            width: "100%",
+            padding: "6px 8px",
+            borderRadius: 5,
+            border: "1px solid #d1d5db",
+            fontSize: 13,
+            boxSizing: "border-box",
+          }}
           value={table}
           onChange={(e) => setTable(e.target.value)}
         />

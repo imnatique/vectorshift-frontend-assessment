@@ -3,7 +3,7 @@ import { Handle, Position } from "reactflow";
 export const BaseNode = ({
   title,
   subtitle = "",
-  headerColor = "#2563eb",
+  headerColor = "#000",
   children,
   inputs = [],
   outputs = [],
@@ -16,15 +16,14 @@ export const BaseNode = ({
         width,
         minHeight,
         background: "#fff",
-        borderRadius: 12,
+        borderRadius: 8,
         border: "1px solid #d1d5db",
         boxShadow: "0 3px 10px rgba(0,0,0,.08)",
         position: "relative",
-        overflow: "hidden",
+        overflow: "visible",
       }}
     >
       {/* Header */}
-
       <div
         style={{
           background: headerColor,
@@ -32,13 +31,14 @@ export const BaseNode = ({
           padding: "10px 14px",
           fontWeight: 600,
           fontSize: 15,
+          borderTopLeftRadius: 8,
+          borderTopRightRadius: 8,
         }}
       >
         {title}
       </div>
 
       {/* Subtitle */}
-
       {subtitle && (
         <div
           style={{
@@ -52,7 +52,6 @@ export const BaseNode = ({
       )}
 
       {/* Body */}
-
       <div
         style={{
           padding: 14,
@@ -65,7 +64,6 @@ export const BaseNode = ({
       </div>
 
       {/* LEFT HANDLES */}
-
       {inputs.map((handle, index) => {
         const headerHeight = subtitle ? 70 : 50;
         const usableHeight = minHeight - headerHeight;
@@ -78,14 +76,40 @@ export const BaseNode = ({
               type="target"
               position={Position.Left}
               id={handle.id}
-              style={{ top }}
+              style={{
+                top,
+                left: -7,
+                width: 10,
+                height: 10,
+                background: "#5858",
+                border: "2px solid black",
+              }}
             />
+
+            {handle.label && (
+              <span
+                style={{
+                  position: "absolute",
+                  right: "100%",
+                  marginRight: 8,
+                  top: top + 4,
+                  whiteSpace: "nowrap",
+                  textAlign: "right",
+                  fontSize: 11,
+                  color: "#666",
+                  fontWeight: 500,
+                  pointerEvents: "none",
+                  userSelect: "none",
+                }}
+              >
+                {handle.label}
+              </span>
+            )}
           </div>
         );
       })}
 
       {/* RIGHT HANDLES */}
-
       {outputs.map((handle, index) => {
         const headerHeight = subtitle ? 70 : 50;
         const usableHeight = minHeight - headerHeight;
@@ -93,14 +117,20 @@ export const BaseNode = ({
           headerHeight + ((index + 1) * usableHeight) / (outputs.length + 1);
 
         return (
-          <div key={handle.id}>
-            <Handle
-              type="source"
-              position={Position.Right}
-              id={handle.id}
-              style={{ top }}
-            />
-          </div>
+          <Handle
+            key={handle.id}
+            type="source"
+            position={Position.Right}
+            id={handle.id}
+            style={{
+              top,
+              right: -7,
+              width: 10,
+              height: 10,
+              background: "#5858",
+              border: "2px solid black",
+            }}
+          />
         );
       })}
     </div>

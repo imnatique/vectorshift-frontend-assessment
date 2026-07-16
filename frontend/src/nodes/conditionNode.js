@@ -7,10 +7,7 @@ export const ConditionNode = ({ id }) => {
       subtitle="If / Else"
       headerColor="#ca8a04"
       inputs={[{ id: `${id}-input` }]}
-      outputs={[
-        { id: `${id}-true` },
-        { id: `${id}-false` },
-      ]}
+      outputs={[{ id: `${id}-true` }, { id: `${id}-false` }]}
     >
       <div>Evaluate condition</div>
     </BaseNode>

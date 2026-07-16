@@ -3,7 +3,7 @@ import { BaseNode } from "../components/BaseNode";
 
 export const OutputNode = ({ id, data }) => {
   const [name, setName] = useState(
-    data?.outputName || id.replace("customOutput-", "output_")
+    data?.outputName || id.replace("customOutput-", "output_"),
   );
 
   const [type, setType] = useState(data?.outputType || "Text");
@@ -22,7 +22,14 @@ export const OutputNode = ({ id, data }) => {
       <label>
         Name
         <input
-          style={{ width: "100%" }}
+          style={{
+            width: "100%",
+            padding: "6px 8px",
+            borderRadius: 5,
+            border: "1px solid #d1d5db",
+            fontSize: 13,
+            boxSizing: "border-box",
+          }}
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
@@ -31,7 +38,15 @@ export const OutputNode = ({ id, data }) => {
       <label>
         Type
         <select
-          style={{ width: "100%" }}
+          style={{
+            width: "100%",
+            padding: "6px 8px",
+            borderRadius: 5,
+            border: "1px solid #d1d5db",
+            fontSize: 13,
+            boxSizing: "border-box",
+            cursor: "pointer",
+          }}
           value={type}
           onChange={(e) => setType(e.target.value)}
         >

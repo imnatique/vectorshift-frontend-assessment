@@ -9,14 +9,18 @@ export const MathNode = ({ id }) => {
       title="Math"
       subtitle="Arithmetic"
       headerColor="#0f766e"
-      inputs={[
-        { id: `${id}-a` },
-        { id: `${id}-b` },
-      ]}
+      inputs={[{ id: `${id}-a` }, { id: `${id}-b` }]}
       outputs={[{ id: `${id}-result` }]}
     >
       <select
-        style={{ width: "100%" }}
+        style={{
+          width: "100%",
+          padding: "6px 8px",
+          borderRadius: 5,
+          border: "1px solid #d1d5db",
+          fontSize: 13,
+          boxSizing: "border-box",
+        }}
         value={operation}
         onChange={(e) => setOperation(e.target.value)}
       >

@@ -4,17 +4,17 @@
 
 import { useState, useRef, useCallback } from "react";
 import ReactFlow, { Controls, Background, MiniMap } from "reactflow";
-import { useStore } from "./store";
+import { useStore } from "../store";
 import { shallow } from "zustand/shallow";
-import { InputNode } from "./nodes/inputNode";
-import { LLMNode } from "./nodes/llmNode";
-import { OutputNode } from "./nodes/outputNode";
-import { TextNode } from "./nodes/textNode";
-import { ApiNode } from "./nodes/apiNode";
-import { DatabaseNode } from "./nodes/databaseNode";
-import { MathNode } from "./nodes/mathNode";
-import { ConditionNode } from "./nodes/conditionNode";
-import { DelayNode } from "./nodes/delayNode";
+import { InputNode } from "../nodes/inputNode";
+import { LLMNode } from "../nodes/llmNode";
+import { OutputNode } from "../nodes/outputNode";
+import { TextNode } from "../nodes/textNode";
+import { ApiNode } from "../nodes/apiNode";
+import { DatabaseNode } from "../nodes/databaseNode";
+import { MathNode } from "../nodes/mathNode";
+import { ConditionNode } from "../nodes/conditionNode";
+import { DelayNode } from "../nodes/delayNode";
 
 import "reactflow/dist/style.css";
 
@@ -117,9 +117,13 @@ export const PipelineUI = () => {
           proOptions={proOptions}
           snapGrid={[gridSize, gridSize]}
           connectionLineType="smoothstep"
+          connectionLineStyle={{
+            stroke: "#000",
+            strokeWidth: 2,
+          }}
         >
-          <Background gap={20} color="#e5e7eb" />
-          <Controls showInteractive={true}/>
+          <Background />
+          <Controls showInteractive={true} />
           <MiniMap zoomable pannable />
         </ReactFlow>
       </div>

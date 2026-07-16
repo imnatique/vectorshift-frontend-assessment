@@ -1,4 +1,4 @@
-import { useStore } from "./store";
+import { useStore } from "../store";
 
 export const SubmitButton = () => {
   const { nodes, edges } = useStore();
@@ -42,10 +42,10 @@ DAG : ${result.is_dag ? "Yes" : "No"}`,
       <button
         onClick={handleSubmit}
         style={{
-          padding: "12px 28px",
+          padding: "12px 12px",
           borderRadius: 8,
           border: "none",
-          background: "#2563eb",
+          background: "#589058",
           color: "#fff",
           fontWeight: 600,
           cursor: "pointer",

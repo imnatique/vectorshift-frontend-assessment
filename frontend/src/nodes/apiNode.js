@@ -9,18 +9,21 @@ export const ApiNode = ({ id }) => {
     <BaseNode
       title="API"
       subtitle="HTTP Request"
-      headerColor="#f97316"
-      inputs={[
-        { id: `${id}-trigger` },
-      ]}
-      outputs={[
-        { id: `${id}-response` },
-      ]}
+      headerColor="#00bfa6"
+      inputs={[{ id: `${id}-trigger` }]}
+      outputs={[{ id: `${id}-response` }]}
     >
       <label>
         Method
         <select
-          style={{ width: "100%" }}
+          style={{
+            width: "100%",
+            padding: "6px 8px",
+            borderRadius: 5,
+            border: "1px solid #d1d5db",
+            fontSize: 13,
+            boxSizing: "border-box",
+          }}
           value={method}
           onChange={(e) => setMethod(e.target.value)}
         >
@@ -34,7 +37,14 @@ export const ApiNode = ({ id }) => {
       <label>
         Endpoint
         <input
-          style={{ width: "100%" }}
+          style={{
+            width: "100%",
+            padding: "6px 8px",
+            borderRadius: 5,
+            border: "1px solid #d1d5db",
+            fontSize: 13,
+            boxSizing: "border-box",
+          }}
           value={endpoint}
           onChange={(e) => setEndpoint(e.target.value)}
         />
